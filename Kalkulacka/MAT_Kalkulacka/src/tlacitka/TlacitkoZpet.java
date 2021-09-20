@@ -9,7 +9,10 @@ public class TlacitkoZpet implements I_Algoritmus {
     }
     @Override
     public void Algoritmus() {
-        mujModel.setRadek1(mujModel.getRadek1().substring(0, mujModel.getRadek1().length() - 1));
+        if (mujModel.getRadek1().equals("")) return;
+        mujModel.setRadek1(
+                mujModel.getRadek1()
+                .substring(0, mujModel.getRadek1().length() - 1)
+        );
     }
-
 }

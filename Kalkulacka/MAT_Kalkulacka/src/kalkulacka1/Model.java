@@ -27,7 +27,7 @@ public class Model {
     //Konstruktor
     private Model() {
         radek1 = "";
-        radek2 = "0";
+        radek2 = "";
     }
     
     //Singleton

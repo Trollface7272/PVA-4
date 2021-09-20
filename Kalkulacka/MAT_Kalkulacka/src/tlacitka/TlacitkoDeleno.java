@@ -10,9 +10,11 @@ public class TlacitkoDeleno implements I_Algoritmus {
     @Override
     public void Algoritmus() {
         String radek1 = mujModel.getRadek1();
-        try { Integer.parseInt(radek1.substring(radek1.length()-1)); }
-        catch (NumberFormatException ex) { return; }
-        mujModel.setRadek1(radek1 + "/");
+        String radek2 = mujModel.getRadek2();
+        if (radek1.equals("")) return;
+        if (Integer.parseInt(radek1) == 0) return;
+        mujModel.setRadek2(radek2 + radek1 + "/");
+        mujModel.setRadek1("");
     }
 
 }

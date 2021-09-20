@@ -10,8 +10,9 @@ public class TlacitkoTecka implements I_Algoritmus {
     @Override
     public void Algoritmus() {
         String radek1 = mujModel.getRadek1();
-        try { Integer.parseInt(radek1.substring(radek1.length()-1)); }
-        catch (NumberFormatException ex) { return; }
+        if (radek1.contains(".")) return;
+        if (radek1.equals("")) mujModel.setRadek1("0");
+        
         mujModel.setRadek1(mujModel.getRadek1() + ".");
     }
 

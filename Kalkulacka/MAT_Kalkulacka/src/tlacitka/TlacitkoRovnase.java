@@ -15,7 +15,10 @@ public class TlacitkoRovnase implements I_Algoritmus {
         ScriptEngineManager manager = new ScriptEngineManager();
         ScriptEngine js = manager.getEngineByName("js");
         try {
-            mujModel.setRadek2(js.eval(mujModel.getRadek1()).toString());
+            mujModel.setRadek2(
+                    js.eval(mujModel.getRadek1()).toString()
+            );
+            mujModel.setRadek1("");
         } catch (ScriptException ex) {
             System.out.println("Error");
         }
