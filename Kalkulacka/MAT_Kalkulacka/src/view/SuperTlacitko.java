@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -16,7 +17,8 @@ public class SuperTlacitko extends JButton {
     public SuperTlacitko() {
         super();
         this.setBackground(new Color(200, 255, 200));
-        this.setFont(new Font("Tahoma", 1, 11));
+        this.setFont(new Font("Tahoma", 1, 16));
+        this.setForeground(Color.white);
     }
     public SuperTlacitko(I_Algoritmus alg, final int klavesa, String nazev) {
         super();
@@ -32,8 +34,10 @@ public class SuperTlacitko extends JButton {
                 KeyStroke.getKeyStroke(klavesa, 0),
                 WHEN_IN_FOCUSED_WINDOW);
         this.setText(nazev);
-        this.setBackground(new Color(200, 255, 200));
-        this.setFont(new Font("Tahoma", 1, 11));
+        this.setBackground(new Color(66,66,66));
+        this.setFont(new Font("Tahoma", 1, 15));
+        this.setForeground(Color.white);
+        this.setMargin(new Insets(0, 0, 0, 0));
     }
     
     //Metody Strategie

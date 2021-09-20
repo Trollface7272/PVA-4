@@ -1,11 +1,18 @@
 package view;
 
 import java.awt.event.KeyEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import kalkulacka1.Model;
 import tlacitka.*;
 
-public class View extends javax.swing.JFrame {
+public class View extends javax.swing.JFrame implements PropertyChangeListener {
+    //Vlastnosti
+    private final Model mujModel;
     public View() {
         initComponents();
+        mujModel = Model.getInstance();
+        mujModel.addPropertyChangeListener(this);
     }
 
     /**
@@ -19,22 +26,26 @@ public class View extends javax.swing.JFrame {
 
         radek1 = new javax.swing.JTextField();
         radek2 = new javax.swing.JTextField();
-        superTlacitko4 = new view.SuperTlacitko();
-        superTlacitko5 = new view.SuperTlacitko(new TlacitkoDeleno(), KeyEvent.VK_DIVIDE, "/");
-        superTlacitko6 = new view.SuperTlacitko(new TlacitkoKrat(), KeyEvent.VK_MULTIPLY, "*");
-        superTlacitko7 = new view.SuperTlacitko(new TlacitkoMinus(), KeyEvent.VK_SUBTRACT, "-");
-        superTlacitko8 = new view.SuperTlacitko();
-        superTlacitko9 = new view.SuperTlacitko();
-        superTlacitko10 = new view.SuperTlacitko();
-        superTlacitko11 = new view.SuperTlacitko(new TlacitkoPlus(), KeyEvent.VK_ADD, "+");
-        superTlacitko12 = new view.SuperTlacitko();
-        superTlacitko13 = new view.SuperTlacitko();
-        superTlacitko14 = new view.SuperTlacitko();
-        superTlacitko15 = new view.SuperTlacitko();
-        superTlacitko16 = new view.SuperTlacitko();
-        superTlacitko17 = new view.SuperTlacitko();
-        superTlacitko18 = new view.SuperTlacitko();
-        superTlacitko19 = new view.SuperTlacitko();
+        superTlacitko4 = new view.SuperTlacitko(new TlacitkoCE(), KeyEvent.VK_F23, "CE");
+        superTlacitko5 = new view.SuperTlacitko(new TlacitkoC(), KeyEvent.VK_F24, "C");
+        superTlacitko6 = new view.SuperTlacitko(new TlacitkoZpet(), KeyEvent.VK_BACK_SPACE, "<-");
+        superTlacitko7 = new view.SuperTlacitko(new TlacitkoDeleno(), KeyEvent.VK_DIVIDE, "/");
+        superTlacitko8 = new view.SuperTlacitko(new Tlacitko4(), KeyEvent.VK_NUMPAD4, "4");
+        superTlacitko9 = new view.SuperTlacitko(new Tlacitko5(), KeyEvent.VK_NUMPAD5, "5");
+        superTlacitko10 = new view.SuperTlacitko(new Tlacitko6(), KeyEvent.VK_NUMPAD6, "6");
+        superTlacitko11 = new view.SuperTlacitko(new TlacitkoMinus(), KeyEvent.VK_SUBTRACT, "-");
+        superTlacitko12 = new view.SuperTlacitko(new TlacitkoRovnase(), KeyEvent.VK_ENTER, "=");
+        superTlacitko13 = new view.SuperTlacitko(new Tlacitko1(), KeyEvent.VK_NUMPAD1, "1");
+        superTlacitko14 = new view.SuperTlacitko(new Tlacitko2(), KeyEvent.VK_NUMPAD2, "2");
+        superTlacitko15 = new view.SuperTlacitko(new Tlacitko3(), KeyEvent.VK_NUMPAD3, "3");
+        superTlacitko16 = new view.SuperTlacitko(new TlacitkoPlus(), KeyEvent.VK_ADD, "+");
+        superTlacitko17 = new view.SuperTlacitko(new Tlacitko0(), KeyEvent.VK_NUMPAD0, "0");
+        superTlacitko18 = new view.SuperTlacitko(new TlacitkoTecka(), KeyEvent.VK_DECIMAL, ".");
+        superTlacitko19 = new view.SuperTlacitko(new TlacitkoAns(), KeyEvent.VK_F22, "ANS");
+        superTlacitko20 = new view.SuperTlacitko(new Tlacitko7(), KeyEvent.VK_NUMPAD7, "7");
+        superTlacitko21 = new view.SuperTlacitko(new Tlacitko8(), KeyEvent.VK_NUMPAD8, "8");
+        superTlacitko22 = new view.SuperTlacitko(new Tlacitko9(), KeyEvent.VK_NUMPAD9, "9");
+        superTlacitko23 = new view.SuperTlacitko(new TlacitkoKrat(), KeyEvent.VK_MULTIPLY, "*");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -109,6 +120,22 @@ public class View extends javax.swing.JFrame {
         superTlacitko19.setMinimumSize(new java.awt.Dimension(50, 50));
         superTlacitko19.setPreferredSize(new java.awt.Dimension(50, 50));
 
+        superTlacitko20.setMaximumSize(new java.awt.Dimension(50, 50));
+        superTlacitko20.setMinimumSize(new java.awt.Dimension(50, 50));
+        superTlacitko20.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        superTlacitko21.setMaximumSize(new java.awt.Dimension(50, 50));
+        superTlacitko21.setMinimumSize(new java.awt.Dimension(50, 50));
+        superTlacitko21.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        superTlacitko22.setMaximumSize(new java.awt.Dimension(50, 50));
+        superTlacitko22.setMinimumSize(new java.awt.Dimension(50, 50));
+        superTlacitko22.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        superTlacitko23.setMaximumSize(new java.awt.Dimension(50, 50));
+        superTlacitko23.setMinimumSize(new java.awt.Dimension(50, 50));
+        superTlacitko23.setPreferredSize(new java.awt.Dimension(50, 50));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,16 +143,8 @@ public class View extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(superTlacitko8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(superTlacitko9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(superTlacitko10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(superTlacitko11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(superTlacitko13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -143,6 +162,16 @@ public class View extends javax.swing.JFrame {
                                 .addComponent(superTlacitko19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(superTlacitko12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(superTlacitko8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(superTlacitko9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(superTlacitko10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(superTlacitko11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(radek1, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(radek2, javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,8 +182,17 @@ public class View extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(superTlacitko6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(superTlacitko7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(superTlacitko7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(superTlacitko20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(superTlacitko21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(superTlacitko22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(superTlacitko23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,6 +207,12 @@ public class View extends javax.swing.JFrame {
                     .addComponent(superTlacitko5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(superTlacitko6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(superTlacitko7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(superTlacitko20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(superTlacitko21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(superTlacitko22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(superTlacitko23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(superTlacitko8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,6 +251,10 @@ public class View extends javax.swing.JFrame {
     private view.SuperTlacitko superTlacitko17;
     private view.SuperTlacitko superTlacitko18;
     private view.SuperTlacitko superTlacitko19;
+    private view.SuperTlacitko superTlacitko20;
+    private view.SuperTlacitko superTlacitko21;
+    private view.SuperTlacitko superTlacitko22;
+    private view.SuperTlacitko superTlacitko23;
     private view.SuperTlacitko superTlacitko4;
     private view.SuperTlacitko superTlacitko5;
     private view.SuperTlacitko superTlacitko6;
@@ -214,4 +262,10 @@ public class View extends javax.swing.JFrame {
     private view.SuperTlacitko superTlacitko8;
     private view.SuperTlacitko superTlacitko9;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if (evt.getPropertyName().equals("radek1")) radek1.setText(evt.getNewValue().toString());
+        else if (evt.getPropertyName().equals("radek2")) radek2.setText(evt.getNewValue().toString());
+    }
 }
