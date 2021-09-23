@@ -7,5 +7,8 @@ public class MAT_Sibenice {
         for (int i = 0; i < 3; i++) {
             System.out.println(sprava.vyberNahodneSlovo());
         }
+        System.out.println(sprava.obsahujeSlovo("čau"));
+        System.out.println(sprava.obsahujeSlovo("ghdjgdf"));
+        sprava.smazSlovo("čau");
     }
 }
