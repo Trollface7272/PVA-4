@@ -6,8 +6,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
@@ -43,8 +41,8 @@ public class Vykreslovani extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        if (obrazky.size() == 0) return;
-        g.drawImage(obrazky.get(0),
+        if (this.obrazky.isEmpty()) return;
+        g.drawImage(this.obrazky.get(this.stavajiciObrazek),
                 0, 0, 300, 300, this);
     }
 }
