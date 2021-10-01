@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -13,6 +14,7 @@ import javax.swing.JPanel;
 public class Vykreslovani extends JPanel {
     //Vlastnosti
     private ArrayList<BufferedImage> obrazky;
+    private Integer stavajiciObrazek;
     
     //Konstruktor
     public Vykreslovani() {
@@ -29,9 +31,20 @@ public class Vykreslovani extends JPanel {
     }
     //Metody rozhraní
     public void novaHra() {
-        
+        this.stavajiciObrazek = 0;
+        this.repaint();
     }
     public void dalsiObrazek() {
-        
+        if (this.stavajiciObrazek >= obrazky.size() - 1) return;
+        this.stavajiciObrazek++;
+        this.repaint();
+    }
+    
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (obrazky.size() == 0) return;
+        g.drawImage(obrazky.get(0),
+                0, 0, 300, 300, this);
     }
 }
