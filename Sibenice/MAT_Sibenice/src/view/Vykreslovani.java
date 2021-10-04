@@ -3,13 +3,15 @@ package view;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-public class Vykreslovani extends JPanel {
+public class Vykreslovani extends JPanel implements PropertyChangeListener {
     //Vlastnosti
     private ArrayList<BufferedImage> obrazky;
     private Integer stavajiciObrazek;
@@ -44,5 +46,10 @@ public class Vykreslovani extends JPanel {
         if (this.obrazky.isEmpty()) return;
         g.drawImage(this.obrazky.get(this.stavajiciObrazek),
                 0, 0, 300, 300, this);
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        dalsiObrazek();
     }
 }

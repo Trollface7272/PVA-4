@@ -4,7 +4,9 @@ public class View extends javax.swing.JFrame {
 
     public View() {
         initComponents();
-        doplnovaniSlova1.noveSlovo("ifwujsdfks");
+        klavesnice1.addPropertyChangeListener(doplnovaniSlova1);
+        doplnovaniSlova1.noveSlovo("ahoj");
+        doplnovaniSlova1.addPropertyChangeListener(vykreslovani1);
     }
 
     /**
@@ -16,7 +18,9 @@ public class View extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        klavesnice1 = new view.Klavesnice();
         doplnovaniSlova1 = new mat_sibenice.DoplnovaniSlova();
+        vykreslovani1 = new view.Vykreslovani();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -24,11 +28,24 @@ public class View extends javax.swing.JFrame {
         doplnovaniSlova1.setLayout(doplnovaniSlova1Layout);
         doplnovaniSlova1Layout.setHorizontalGroup(
             doplnovaniSlova1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 166, Short.MAX_VALUE)
         );
         doplnovaniSlova1Layout.setVerticalGroup(
             doplnovaniSlova1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        vykreslovani1.setPreferredSize(new java.awt.Dimension(300, 300));
+
+        javax.swing.GroupLayout vykreslovani1Layout = new javax.swing.GroupLayout(vykreslovani1);
+        vykreslovani1.setLayout(vykreslovani1Layout);
+        vykreslovani1Layout.setHorizontalGroup(
+            vykreslovani1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+        vykreslovani1Layout.setVerticalGroup(
+            vykreslovani1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -36,16 +53,27 @@ public class View extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(doplnovaniSlova1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(290, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(klavesnice1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(vykreslovani1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(180, 180, 180)
+                        .addComponent(doplnovaniSlova1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(vykreslovani1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(doplnovaniSlova1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addComponent(klavesnice1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -53,5 +81,7 @@ public class View extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private mat_sibenice.DoplnovaniSlova doplnovaniSlova1;
+    private view.Klavesnice klavesnice1;
+    private view.Vykreslovani vykreslovani1;
     // End of variables declaration//GEN-END:variables
 }
