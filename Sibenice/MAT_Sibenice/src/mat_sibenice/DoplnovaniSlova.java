@@ -29,9 +29,8 @@ public class DoplnovaniSlova extends JPanel {
         for (int i = 0; i < this.slovo.length(); i++) {
             if (this.slovo.charAt(i) != pismeno) continue;
             this.pismenaSlova[i] = pismeno;
-            System.out.println(this.pismenaSlova.toString());
         }
         
-        return false;
+        return true;
     }
 }
