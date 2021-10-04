@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.text.Normalizer;
 import javax.swing.JPanel;
 
 public class DoplnovaniSlova extends JPanel implements PropertyChangeListener {
@@ -26,10 +27,12 @@ public class DoplnovaniSlova extends JPanel implements PropertyChangeListener {
         noveSlovo(spravaSlov.vyberNahodneSlovo());
     }
     public boolean zkusPismeno(char pismeno) {
-        if (!this.slovo.contains(String.valueOf(pismeno))) return false;
-        for (int i = 0; i < this.slovo.length(); i++) {
-            if (this.slovo.charAt(i) != pismeno) continue;
-            this.pismenaSlova[i] = pismeno;
+        String str = Normalizer.normalize(this.slovo, Normalizer.Form.NFD);
+        str = str.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+        if (!str.contains(String.valueOf(pismeno))) return false;
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) != pismeno) continue;
+            this.pismenaSlova[i] = this.slovo.charAt(i);
         }
         this.repaint();
         return true;
