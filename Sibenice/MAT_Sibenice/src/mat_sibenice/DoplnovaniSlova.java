@@ -12,8 +12,6 @@ public class DoplnovaniSlova extends JPanel {
         delkaSlova = 0;
         slovo = "";
         pismenaSlova = new char[0];
-        noveSlovo("ahoj");
-        zkusPismeno('a');
     }
     
     //Metody rozhraní
