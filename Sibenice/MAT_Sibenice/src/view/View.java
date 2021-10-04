@@ -5,8 +5,9 @@ public class View extends javax.swing.JFrame {
     public View() {
         initComponents();
         klavesnice1.addPropertyChangeListener(doplnovaniSlova1);
-        doplnovaniSlova1.noveSlovo("ahoj");
         doplnovaniSlova1.addPropertyChangeListener(vykreslovani1);
+        doplnovaniSlova1.addPropertyChangeListener(klavesnice1);
+        vykreslovani1.addPropertyChangeListener(klavesnice1);
     }
 
     /**
@@ -21,6 +22,7 @@ public class View extends javax.swing.JFrame {
         klavesnice1 = new view.Klavesnice();
         doplnovaniSlova1 = new mat_sibenice.DoplnovaniSlova();
         vykreslovani1 = new view.Vykreslovani();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,6 +50,13 @@ public class View extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
+        jButton1.setText("Nova hra");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -62,7 +71,10 @@ public class View extends javax.swing.JFrame {
                         .addComponent(vykreslovani1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(180, 180, 180)
-                        .addComponent(doplnovaniSlova1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(doplnovaniSlova1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(182, 182, 182)
+                        .addComponent(jButton1)))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -73,14 +85,23 @@ public class View extends javax.swing.JFrame {
                 .addComponent(doplnovaniSlova1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addComponent(klavesnice1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        klavesnice1.novaHra();
+        doplnovaniSlova1.novaHra();
+        vykreslovani1.novaHra();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private mat_sibenice.DoplnovaniSlova doplnovaniSlova1;
+    private javax.swing.JButton jButton1;
     private view.Klavesnice klavesnice1;
     private view.Vykreslovani vykreslovani1;
     // End of variables declaration//GEN-END:variables

@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,10 +35,11 @@ public class Vykreslovani extends JPanel implements PropertyChangeListener {
         this.stavajiciObrazek = 0;
         this.repaint();
     }
-    public void dalsiObrazek() {
-        if (this.stavajiciObrazek >= obrazky.size() - 1) return;
+    public boolean dalsiObrazek() {
+        if (this.stavajiciObrazek >= obrazky.size() - 1) return true;
         this.stavajiciObrazek++;
         this.repaint();
+        return this.stavajiciObrazek == obrazky.size() - 1;
     }
     
     @Override
@@ -50,6 +52,19 @@ public class Vykreslovani extends JPanel implements PropertyChangeListener {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        dalsiObrazek();
+        if (evt.getPropertyName().equals("spatny_znak")) 
+            if (dalsiObrazek()) propertyChangeSupport.firePropertyChange("prohra", "", "a");
     }
+
+    //Property chaneg support
+    private transient final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        propertyChangeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        propertyChangeSupport.removePropertyChangeListener(listener);
+    }
+
 }

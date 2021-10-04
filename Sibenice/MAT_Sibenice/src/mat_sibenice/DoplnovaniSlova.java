@@ -12,21 +12,18 @@ public class DoplnovaniSlova extends JPanel implements PropertyChangeListener {
     private String slovo;
     private char[] pismenaSlova;
     private int delkaSlova;
+    private SpravaSlov spravaSlov;
     //Konstruktor
     public DoplnovaniSlova() {
         delkaSlova = 0;
         slovo = "";
         pismenaSlova = new char[0];
+        spravaSlov = new SpravaSlov("src/slova/slovo.txt");
     }
     
     //Metody rozhraní
-    public void noveSlovo(String slovo) {
-        slovo = slovo.toUpperCase();
-        this.delkaSlova = slovo.length();
-        this.slovo = slovo;
-        this.pismenaSlova = slovo.replaceAll("[^.!?\\s]", "_").toCharArray();
-        
-        this.repaint();
+    public void novaHra() {
+        noveSlovo(spravaSlov.vyberNahodneSlovo());
     }
     public boolean zkusPismeno(char pismeno) {
         if (!this.slovo.contains(String.valueOf(pismeno))) return false;
@@ -50,6 +47,21 @@ public class DoplnovaniSlova extends JPanel implements PropertyChangeListener {
         if (!"stisk_tlacitka".equals(evt.getPropertyName())) return;
         if (!zkusPismeno(evt.getNewValue().toString().charAt(0)))
             propertyChangeSupport.firePropertyChange("spatny_znak", "", "a");
+        if (zkontrolujVyhru()) 
+            propertyChangeSupport.firePropertyChange("vyhra", "", "a");
+    }
+    //Metody
+    private void noveSlovo(String slovo) {
+        slovo = slovo.toUpperCase();
+        this.delkaSlova = slovo.length();
+        this.slovo = slovo;
+        this.pismenaSlova = slovo.replaceAll("[^.!?\\s]", "_").toCharArray();
+        
+        this.repaint();
+    }
+    
+    private boolean zkontrolujVyhru() {
+        return !(new String(this.pismenaSlova).contains("_"));
     }
 
     //Property change support
