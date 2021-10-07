@@ -25,12 +25,17 @@ public class Platno extends JPanel {
         });
     }
     
+    //Metody rozhraní
     public void naplnPole(ArrayList<Boolean> pole) {
         this.pole.clear();
         for (int i = 0; i < (20*20); i++) {
             this.pole.add(pole.get(i));
         }
         this.repaint();
+    }
+    
+    public ArrayList<Boolean> dejPole() {
+        return this.pole;
     }
     
     
@@ -41,6 +46,7 @@ public class Platno extends JPanel {
         tiskPole(g);
     }
     
+    //Metody
     private void tiskPole(Graphics g) {
         if (pole.isEmpty()) return;
         for (int i = 0; i < (20*20); i++) {
