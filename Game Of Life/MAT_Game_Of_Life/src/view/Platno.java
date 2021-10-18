@@ -88,7 +88,6 @@ public class Platno extends JPanel {
         int posX = x/velikost;
         int posY = y/velikost;
         int pos = posY * 20 + posX;
-        System.out.println(pos);
         pole.set(pos, !pole.get(pos));
         this.repaint();
     }
