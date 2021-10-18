@@ -14,27 +14,30 @@ public class Model {
         this.oldPole = pole;
     }
     public ArrayList<Boolean> novaGenerace() {
+        vytvorNovePole();
         spustPravidla();
         return newPole;
     }
     
+    private void vytvorNovePole() {
+        newPole = new ArrayList<>();
+        for (int i = 0; i < velikostX * velikostY; i++) {
+            newPole.add(false);
+        }
+    }
+    
     private void spustPravidla() {
-        pravidlo1();
-        pravidlo2();
-        pravidlo3();
-        pravidlo4();
+        for (int i = 0; i < velikostX * velikostY; i++) {
+            int sousedi = zjistiSousedy(i % velikostX, i / velikostY);
+            Boolean alive = pravidlo1(sousedi, oldPole.get(i)) || pravidlo2(sousedi, oldPole.get(i));
+            newPole.set(i, alive);
+        }
     }
-    private void pravidlo1() {
-        
+    private Boolean pravidlo1(int sousedi, Boolean isAlive) {
+        return isAlive && sousedi > 1 && sousedi < 4;
     }
-    private void pravidlo2() {
-        
-    }
-    private void pravidlo3() {
-        
-    }
-    private void pravidlo4() {
-        
+    private Boolean pravidlo2(int sousedi, Boolean isAlive) {
+        return !isAlive && sousedi == 3;
     }
     
     private int zjistiSousedy(int x, int y) {
