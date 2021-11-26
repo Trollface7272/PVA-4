@@ -16,11 +16,12 @@ public class Platno extends JPanel {
         hra = new Hra();
         addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mouseReleased(MouseEvent e) {
                 super.mouseClicked(e);
                 int poziceX = e.getX() / Nastaveni.rozmerPolicka;
                 int poziceY = e.getY() / Nastaveni.rozmerPolicka;
-                System.out.println(poziceX + " - " + poziceY);
+                if (poziceX >= Nastaveni.velikostPole || 
+                        poziceY >= Nastaveni.velikostPole) return;
                 hra.polickoKliknuto(poziceX, poziceY);
                 repaint();
             }
@@ -32,6 +33,13 @@ public class Platno extends JPanel {
         super.paintComponent(g);
         vykreslyPozadi(g);
         tiskPole(g);
+    }
+    
+    
+    //Metody
+    public void NovaHra() {
+        hra.NovaHra();
+        this.repaint();
     }
     
     private void vykreslyPozadi(Graphics g) {
@@ -56,7 +64,7 @@ public class Platno extends JPanel {
                 );
                 
                 if (pole[i][j] == null) continue;
-                g.setColor(pole[i][j] ? Color.BLACK : Color.ORANGE);
+                g.setColor(pole[i][j] ? Nastaveni.barva1 : Nastaveni.barva2);
                 g.fillRect(
                         i * Nastaveni.rozmerPolicka,
                         j * Nastaveni.rozmerPolicka, 
@@ -67,7 +75,6 @@ public class Platno extends JPanel {
                 g.setFont(new Font("Times New Roman", 0, Nastaveni.rozmerPolicka));
                 FontMetrics metrics = g.getFontMetrics();
                 int vyska = metrics.getHeight();
-                System.out.println(vyska);
                 int sirka = g.getFontMetrics().charWidth(pole[i][j] ? Nastaveni.znak1 : Nastaveni.znak2);
                 g.drawString(
                         String.valueOf(pole[i][j] ? Nastaveni.znak1 : Nastaveni.znak2),
