@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
 public class Karta extends JPanel {
@@ -17,10 +19,19 @@ public class Karta extends JPanel {
     public int obrazek;
     //Konstruktor
     public Karta(Dimension pozice, int obrazek) {
-        this.stav = Stav.uhodnuta;
+        this.stav = Stav.neotocena;
         this.pozice = pozice;
         this.obrazek = obrazek;
         this.setSize(velikost);
+        this.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                super.mouseReleased(e);
+                System.out.println(obrazek);
+                Otoc();
+            }
+            
+        });
     }
     
     public void Otoc() {
