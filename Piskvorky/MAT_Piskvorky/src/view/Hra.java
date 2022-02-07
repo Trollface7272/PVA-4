@@ -1,5 +1,7 @@
 package view;
 
+import nastaveni.Nastaveni;
+
 public class Hra extends javax.swing.JFrame {
 
     public Hra() {
@@ -16,9 +18,30 @@ public class Hra extends javax.swing.JFrame {
     private void initComponents() {
 
         platno1 = new komponenty.Platno();
+        jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        platno1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                platno1MouseReleased(evt);
+            }
+        });
+
+        javax.swing.GroupLayout platno1Layout = new javax.swing.GroupLayout(platno1);
+        platno1.setLayout(platno1Layout);
+        platno1Layout.setHorizontalGroup(
+            platno1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 609, Short.MAX_VALUE)
+        );
+        platno1Layout.setVerticalGroup(
+            platno1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 603, Short.MAX_VALUE)
+        );
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("Nyní je na tahu hráč: X");
 
         jButton1.setText("Nová hra");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -27,23 +50,6 @@ public class Hra extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout platno1Layout = new javax.swing.GroupLayout(platno1);
-        platno1.setLayout(platno1Layout);
-        platno1Layout.setHorizontalGroup(
-            platno1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, platno1Layout.createSequentialGroup()
-                .addContainerGap(618, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        platno1Layout.setVerticalGroup(
-            platno1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, platno1Layout.createSequentialGroup()
-                .addContainerGap(549, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -51,13 +57,22 @@ public class Hra extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(platno1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(platno1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(platno1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -68,8 +83,13 @@ public class Hra extends javax.swing.JFrame {
         platno1.NovaHra();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void platno1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_platno1MouseReleased
+        jLabel1.setText("Nyní je na tahu hráč: " + (platno1.GetTah() ? Nastaveni.znak1 : Nastaveni.znak2));
+    }//GEN-LAST:event_platno1MouseReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private komponenty.Platno platno1;
     // End of variables declaration//GEN-END:variables
 }

@@ -41,6 +41,9 @@ public class Platno extends JPanel {
         hra.NovaHra();
         this.repaint();
     }
+    public Boolean GetTah() {
+        return hra.GetTah();
+    }
     
     private void vykreslyPozadi(Graphics g) {
         g.setColor(Color.WHITE);

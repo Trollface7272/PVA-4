@@ -40,6 +40,10 @@ public class Hra {
         this.vyherce = null;
     }
     
+    public Boolean GetTah() {
+        return hrac;
+    }
+    
     private boolean Vyhra(int x, int y) {
         if (ZkontrolujSikmo(x, y)) return true;
         if (ZkontrolujVodorovne(x, y)) return true;
