@@ -17,7 +17,7 @@ public class Karta extends JPanel {
     public int obrazek;
     //Konstruktor
     public Karta(Dimension pozice, int obrazek) {
-        this.stav = Stav.otocena;
+        this.stav = Stav.uhodnuta;
         this.pozice = pozice;
         this.obrazek = obrazek;
         this.setSize(velikost);
@@ -44,10 +44,16 @@ public class Karta extends JPanel {
                 g.setColor(Color.black);
                 g.drawRect(3, 3, this.velikost.width-4, this.velikost.height-4);
                 g.setFont(new Font("Arial", 0, 20));
-                g.drawString(this.obrazek + "", this.getWidth()/2, this.getHeight()/2);
+                g.drawString(this.obrazek + "",
+                        this.getWidth()/2,
+                        this.getHeight()/2);
                 break;
             case uhodnuta:
-                
+                g.setColor(Color.white);
+                g.fillRect(0, 0, this.getWidth(), this.getHeight());
+                g.setColor(Color.black);
+                g.drawRect(3, 3, this.velikost.width-4, this.velikost.height-4);
+                g.drawString("Uhodnuto", 0, this.getHeight()/2);
                 break;
             default:
                 break;
